@@ -18,21 +18,33 @@
             color: white;
             border: none;
             border-radius: 5px;
+            margin-top: 10px;
+        }
+        textarea {
+            position: absolute;
+            left: -9999px;
         }
     </style>
 </head>
 <body>
 
     <h2>Clique para copiar o Pix Copia e Cola</h2>
-    <p id="codigo">00020126330014BR.GOV.BCB.PIX0111160772727795204000053039865802BR5925Marcos Vinicius Gomes da 6009SAO PAULO61080540900062240520HMiyUL1zLrXTiSf5fw836304C2CF</p>
-    <button onclick="copiarTexto()">Copiar Código</button>
+    <p>Pressione o botão abaixo para copiar:</p>
+
+    <textarea id="codigo">00020126330014BR.GOV.BCB.PIX0111160772727795204000053039865802BR5925Marcos Vinicius Gomes da 6009SAO PAULO61080540900062240520HMiyUL1zLrXTiSf5fw836304C2CF</textarea>
+
+    <button onclick="copiarTexto()">Copiar Código Pix</button>
 
     <script>
         function copiarTexto() {
-            const texto = document.getElementById("codigo").innerText;
-            navigator.clipboard.writeText(texto).then(() => {
-                alert("Pix Copia e Cola copiado com sucesso!");
-            });
+            const campoTexto = document.getElementById("codigo");
+            
+            // Seleciona e copia o conteúdo do textarea
+            campoTexto.select();
+            campoTexto.setSelectionRange(0, 99999); // Para dispositivos móveis
+            document.execCommand("copy");
+
+            alert("Pix Copia e Cola copiado com sucesso!");
         }
     </script>
 
